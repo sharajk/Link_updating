@@ -1,5 +1,15 @@
 #Code for figure 3: Influence of stubbornness on outcomes (for static network)
 
+#Loading required model functions (incoming model, outgoing model, consensus speeds)
+
+library(devtools)
+library(roxygen2)
+source_url("https://raw.githubusercontent.com/sharajk/Link_updating/057a5a7a4ce6f72fe06ea31e607518a09fbaba71/Speed.R")
+source_url("https://raw.githubusercontent.com/sharajk/Link_updating/main/Incoming%20model.R")
+source_url("https://raw.githubusercontent.com/sharajk/Link_updating/main/Outgoing%20model.R")
+
+##############################
+
 #INPUT
 #set constant global features
 N <- 100 #total population size
@@ -49,6 +59,7 @@ none <- eg
 conim <- none[none$im_out > 0.8,]
 conom <- none[none$om_out > 0.8,]
 
+#Incoming model
 none %>%
   ggplot(aes(x=BM, y=BP, fill=im_out))+
   geom_tile(color = "grey") +
@@ -56,16 +67,17 @@ none %>%
   scale_fill_gradient2(high = scales::muted("red"),low = scales::muted("blue"),
                        mid = "gray", guide = "colourbar", limits = c(-1,1))+
   theme_classic(base_size = 17)+
-  labs(title = "Effect of Stubbornness on Final state", 
+  labs(title = "Effect of Stubbornness on Final state (IM)", 
        x= expression(paste("Minority stubbornness ",(beta['-']) )), 
        y = expression(paste("Majority stubbornness ", (beta['+']))), fill = "Final State", subtitle = "Static network")+
   theme(plot.title = element_text(hjust = 0.5),
         plot.subtitle = element_text(hjust = 0.5), 
-        text = element_text(size=17),
+        text = element_text(size=20),
         legend.position = "bottom", legend.key.width = unit(2,"cm"),
         legend.title = element_text(vjust = 0.9))+
   ggpubr::rremove("grid")+ggpubr::border()
 
+#Outgoing model
 none %>%
   ggplot(aes(x=BM, y=BP, fill=om_out))+
   geom_tile(color = "grey") +
@@ -73,12 +85,12 @@ none %>%
   scale_fill_gradient2(high = scales::muted("red"),low = scales::muted("blue"),
                        mid = "gray", guide = "colourbar", limits = c(-1,1))+
   theme_classic(base_size = 17)+
-  labs(title = "Effect of Stubbornness on Final state", 
+  labs(title = "Effect of Stubbornness on Final state (OM)", 
        x= expression(paste("Minority stubbornness ",(beta['-']) )), 
        y = expression(paste("Majority stubbornness ", (beta['+']))), fill = "Final State", subtitle = "Static network")+
   theme(plot.title = element_text(hjust = 0.5),
         plot.subtitle = element_text(hjust = 0.5), 
-        text = element_text(size=17),
+        text = element_text(size=20),
         legend.position = "bottom", legend.key.width = unit(2,"cm"),
         legend.title = element_text(vjust = 0.9))+
   ggpubr::rremove("grid")+ggpubr::border()

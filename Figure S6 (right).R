@@ -1,5 +1,15 @@
 #Code for Figure S6 (left) : influence of minority stubbornness on minority consensus speeds
 
+#Loading required model functions (incoming model, outgoing model, consensus speeds)
+
+library(devtools)
+library(roxygen2)
+source_url("https://raw.githubusercontent.com/sharajk/Link_updating/057a5a7a4ce6f72fe06ea31e607518a09fbaba71/Speed.R")
+source_url("https://raw.githubusercontent.com/sharajk/Link_updating/main/Incoming%20model.R")
+source_url("https://raw.githubusercontent.com/sharajk/Link_updating/main/Outgoing%20model.R")
+
+##############################
+
 #INPUT
 #set constant global features
 N <- 100 #total population size
@@ -20,7 +30,7 @@ p2m <- c(0.8,0) #phi2-
 
 #varying inertia input
 eg <- expand.grid(
-  beta <- seq(0.3,0.8,by=0.1),
+  beta <- seq(0.3,0.8,by=0.05),
   im_out <- NA,
   om_out <- NA,
   stringsAsFactors = TRUE,

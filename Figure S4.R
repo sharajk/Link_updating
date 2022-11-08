@@ -38,7 +38,7 @@ eg <- expand.grid(
 for (i in 1:nrow(eg))
 {
   im_Mf <- IM(p1p, eg$Var1[i], p1m, eg$Var2[i], eg$Var3[i], eg$Var4[i],l,n0)$M
-  eg$Var5[i] <- CSpeed(om_Mf)*sign(im_Mf[T])
+  eg$Var5[i] <- CSpeed(im_Mf)*sign(im_Mf[T])
   om_Mf <- OM(p1p, eg$Var1[i], p1m, eg$Var2[i], eg$Var3[i], eg$Var4[i],l,n0)$M
   eg$Var6[i] <- CSpeed(om_Mf)*sign(om_Mf[T])
 }
@@ -63,6 +63,7 @@ eg%>%
                        na.value = "#9e9e9e", guide = guide_colorbar(draw.llim = TRUE),
                        breaks = trans_breaks("log10", function(x) 10^x),
                        labels = trans_format("log10", math_format(10^.x)),
+                       limits = c(-(10^-1.9),10^-1.9),
                        n.breaks = 5)+
   theme_classic(base_size = 15)+
   labs(title = "Effect of disagreement avoidance \non convergence speed (IM)", x = expression(paste("Minority disagreement avoidance ", (phi['2-']) )), 
@@ -83,6 +84,7 @@ eg%>%
                        na.value = "#9e9e9e", guide = guide_colorbar(draw.llim = TRUE),
                        breaks = trans_breaks("log10", function(x) 10^x),
                        labels = trans_format("log10", math_format(10^.x)),
+                       limits = c(-(10^-1.8),10^-1.8),
                        n.breaks = 5)+
   theme_classic(base_size = 15)+
   labs(title = "Effect of disagreement avoidance \non convergence speed (OM)", x = expression(paste("Minority disagreement avoidance ", (phi['2-']) )), 

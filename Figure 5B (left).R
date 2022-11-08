@@ -1,5 +1,15 @@
 #Code for Figure 5B (left) : influence of inertia on majority consensus speeds
 
+#Loading required model functions (incoming model, outgoing model, consensus speeds)
+
+library(devtools)
+library(roxygen2)
+source_url("https://raw.githubusercontent.com/sharajk/Link_updating/057a5a7a4ce6f72fe06ea31e607518a09fbaba71/Speed.R")
+source_url("https://raw.githubusercontent.com/sharajk/Link_updating/main/Incoming%20model.R")
+source_url("https://raw.githubusercontent.com/sharajk/Link_updating/main/Outgoing%20model.R")
+
+##############################
+
 #INPUT
 #set constant global features
 N <- 100 #total population size
@@ -53,7 +63,7 @@ library(scales)
 data %>%
   ggplot(aes(x=Inertia,y=Speed, linetype = Model))+
   geom_line(color = "red")+
-  scale_y_log10(limits = c(10^-3.25, 10^-1.5),
+  scale_y_log10(limits = c(10^-3.25, 10^-1.3),
                 breaks = trans_breaks("log10", function(x) 10^x),
                 labels = trans_format("log10", math_format(10^.x))) +
   theme_light(base_size = 13)+
@@ -62,5 +72,5 @@ data %>%
   labs(title = "Effect of inertia on\nconvergence speed", 
        x = expression(paste('Inertia ',(lambda))), 
        y = "Speed to majority consensus" ) +
-  theme(plot.title = element_text(hjust = 0.5), text = element_text(size = 17),
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size = 20),
         legend.text = element_text(size=16), legend.title = element_text(size=17))

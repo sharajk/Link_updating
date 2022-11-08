@@ -1,6 +1,16 @@
 #Code for Figure 5A: influence of disagreement avoidant
 #link updating on consensus speeds
 
+#Loading required model functions (incoming model, outgoing model, consensus speeds)
+
+library(devtools)
+library(roxygen2)
+source_url("https://raw.githubusercontent.com/sharajk/Link_updating/057a5a7a4ce6f72fe06ea31e607518a09fbaba71/Speed.R")
+source_url("https://raw.githubusercontent.com/sharajk/Link_updating/main/Incoming%20model.R")
+source_url("https://raw.githubusercontent.com/sharajk/Link_updating/main/Outgoing%20model.R")
+
+##############################
+
 #INPUT
 #set constant global features
 N <- 100 #total population size
@@ -19,7 +29,7 @@ l <- 0.3
 
 ##agreement avoidance variation
 ###varying majority agreement avoidance
-variation <- seq(0,0.8,0.05)
+variation <- seq(0,0.8,by=0.05)
 
 EG1p <- expand.grid(
   eg1p <- variation,
@@ -123,7 +133,7 @@ subpopulation")+
   labs(title = "Effect of disagreement avoidance\non convergence speed", 
        x = expression(paste('Disagreement avoidance probability ',(phi[2]))), 
        y = "Speed to majority consensus" ) +
-  theme(plot.title = element_text(hjust = 0.5), text = element_text(size = 17),
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size = 20),
         legend.text = element_text(size=16), legend.title = element_text(size=17))
 
 
@@ -143,7 +153,7 @@ subpopulation")+
   labs(title = "Effect of Agreement avoidance\non convergence speed", 
        x = expression(paste('Agreement avoidance probability ',(phi[1]))), 
        y = "Speed to majority consensus" ) +
-  theme(plot.title = element_text(hjust = 0.5), text = element_text(size = 17),
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size = 20),
         legend.text = element_text(size=16), legend.title = element_text(size=17))
 
 

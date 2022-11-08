@@ -11,14 +11,14 @@ T <- 10000 #number of time steps
 n0 <- 0.8 #majority proportion
 
 #obtaining random points from area where stalemates occur
-num <- 50 #number of points to obtain
+num <- 1500 #number of points to obtain
 bplus <- runif(num, min=0, max= 0.2) 
 bminus <- numeric(length(bplus))
 
 op <- runif(length(bplus), min = 0.9, max = 1.1)
 for (i in 1:length(op))
 {
-  bminus[i] <- 4*op[i]*bplus[i]
+  bminus[i] <- (n0/(1-n0))*op[i]*bplus[i]
 }
 
 #input for rewiring parameters, inertia and stubbornness

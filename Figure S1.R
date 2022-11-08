@@ -2,6 +2,16 @@
 #strategies (varying in the facets) on outcomes
 #default is for S1A: 80/20 majority to minority ratio (change n0 for changing ratio)
 
+#Loading required model functions (incoming model, outgoing model, consensus speeds)
+
+library(devtools)
+library(roxygen2)
+source_url("https://raw.githubusercontent.com/sharajk/Link_updating/057a5a7a4ce6f72fe06ea31e607518a09fbaba71/Speed.R")
+source_url("https://raw.githubusercontent.com/sharajk/Link_updating/main/Incoming%20model.R")
+source_url("https://raw.githubusercontent.com/sharajk/Link_updating/main/Outgoing%20model.R")
+
+##############################
+
 #INPUT
 #set constant global features
 N <- 100 #total population size
@@ -100,7 +110,7 @@ data %>%
        fill = "Final State", subtitle= "Minority Strategy")+
   theme(plot.title = element_text(hjust = 0.5), 
         plot.subtitle = element_text(hjust = 0.5), 
-        text = element_text(size=14),
+        text = element_text(size=20),
         legend.position = "bottom", legend.key.width = unit(2,"cm"),
         legend.title = element_text(vjust = 0.9))+
   ggpubr::rremove("grid")+ggpubr::border()
@@ -120,7 +130,7 @@ data %>%
        fill = "Final State", subtitle= "Minority Strategy")+
   theme(plot.title = element_text(hjust = 0.5), 
         plot.subtitle = element_text(hjust = 0.5), 
-        text = element_text(size=14),
+        text = element_text(size=20),
         legend.position = "bottom", legend.key.width = unit(2,"cm"),
         legend.title = element_text(vjust = 0.9))+
   ggpubr::rremove("grid")+ggpubr::border()
