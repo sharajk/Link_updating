@@ -3,27 +3,28 @@
 
 ##############################
 
-#INPUT
-
-#set constant global features
-N <- 100 #total population size
-T <- 10000 #number of time steps
-n0 <- 0.8 #majority proportion
-
-###set parameter values
-
-#rewiring probabilities
-p1p <- 0 #phi1+
-p2p <- 0 #phi2+
-p1m <- 0 #phi1-
-p2m <- 0 #phi2-
-
-#stubbornness 
-bp <- 0.1 # + stubbornness
-bm <- 0.1 # - stubbornness
-
-#inertia
-l <- 0.3 
+# #INPUT
+# #for example:
+# 
+# #set constant global features
+# N <- 100 #total population size
+# T <- 10000 #number of time steps
+# n0 <- 0.8 #majority proportion
+# 
+# ###set parameter values
+# 
+# #rewiring probabilities
+# p1p <- 0 #phi1+
+# p2p <- 0 #phi2+
+# p1m <- 0 #phi1-
+# p2m <- 0 #phi2-
+# 
+# #stubbornness 
+# bp <- 0.1 # + stubbornness
+# bm <- 0.1 # - stubbornness
+# 
+# #inertia
+# l <- 0.3 
 
 ##############################
 
