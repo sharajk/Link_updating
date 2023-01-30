@@ -17,7 +17,7 @@ T <- 10000 #number of time steps
 n0 <- 0.8 #majority proportion
 
 #stubbornness 
-bp <- 0.4 # + stubbornness
+bp <- 0.5 # + stubbornness
 bm <- 0 # - stubbornness
 
 #rewiring parameters
@@ -45,6 +45,7 @@ for(i in 1:nrow(eg))
 {
   eg$IM_Speed[i] <- CSpeed(IM(p1p,p2p,p1m,p2m,bp,bm,eg$Inertia[i],n0)$M)
   eg$OM_Speed[i] <- CSpeed(OM(p1p,p2p,p1m,p2m,bp,bm,eg$Inertia[i],n0)$M)
+  print(i)
 }
 
 ###############################

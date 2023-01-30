@@ -47,6 +47,7 @@ for(i in 1:nrow(eg))
 {
   eg$IM_Speed[i] <- CSpeed(IM(p1p,p2p,p1m,p2m,eg$Stubbornness[i],bm,l,n0)$M)
   eg$OM_Speed[i] <- CSpeed(OM(p1p,p2p,p1m,p2m,eg$Stubbornness[i],bm,l,n0)$M)
+  print(i)
 }
 
 ###############################

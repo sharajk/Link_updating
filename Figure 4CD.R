@@ -71,7 +71,7 @@ conom <- df[abs(df$OM_Mf) > 0.8,]
 df%>%
   ggplot(aes(x=phi2m, y=phi2p, fill=IM_Mf))+
   geom_tile(color = "grey")+
-  geom_tile(data = conim, color = "yellow", size = 1.5, linetype = "dotted")+
+  geom_tile(data = conim, color = "yellow", linewidth = 1.5, linetype = "dotted")+
   scale_fill_gradient2(high = scales::muted("red"),low = scales::muted("blue"),
                        mid = "grey",guide = "colourbar", limits = c(-1,1))+
   theme_classic(base_size = 20)+
@@ -92,7 +92,7 @@ df%>%
 df%>%
   ggplot(aes(x=phi2m, y=phi2p, fill=OM_Mf))+
   geom_tile(color = "grey")+
-  geom_tile(data = conom, color = "yellow", size = 1.5, linetype = "dotted")+
+  geom_tile(data = conom, color = "yellow", linewidth = 1.5, linetype = "dotted")+
   scale_fill_gradient2(high = scales::muted("red"),low = scales::muted("blue"),
                        mid = "grey",guide = "colourbar", limits = c(-1,1))+
   theme_classic(base_size = 20)+

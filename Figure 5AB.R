@@ -18,7 +18,7 @@ T <- 10000 #number of time steps
 n0 <- 0.8 #majority proportion
 
 #stubbornness 
-bp <- 0.4 # + stubbornness
+bp <- 0.5 # + stubbornness
 bm <- 0 # - stubbornness
 
 #inertia

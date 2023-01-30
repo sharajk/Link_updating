@@ -17,7 +17,7 @@ T <- 10000 #number of time steps
 n0 <- 0.8 #majority proportion
 
 #obtaining random points from area where stalemates occur
-num <- 1500 #number of points to obtain
+num <- 100 #number of points to obtain
 bplus <- runif(num, min=0, max= 0.2) 
 bminus <- numeric(length(bplus))
 
@@ -59,7 +59,7 @@ for (i in 1:nrow(eg))
 {
   eg$im_out[i] <- IM(eg$Var1[i], eg$Var1.1[i], eg$Var2[i], eg$Var2.1[i], eg$BP[i], eg$Var3[i], eg$L[i], n0)$M[T]
   eg$om_out[i] <- OM(eg$Var1[i], eg$Var1.1[i], eg$Var2[i], eg$Var2.1[i], eg$BP[i], eg$Var3[i], eg$L[i], n0)$M[T]
-  if((ceiling(i/500) - i/500) == 0)
+  if((ceiling(i/100) - i/100) == 0)
   {
     print(i) #indicating progress
   }
@@ -79,7 +79,7 @@ for (j in 1:nrow(egd))
 
 egd <- egd[,c(1,2,3,4)]
 
-colnames(egd) <- c("Stratp", "Stratm", "IM_Mf","OM_Mf")
+colnames(egd) <- c("Stratp", "Stratm", "IM","OM")
 
 egd$Stratp <- factor(egd$Stratp, labels = c("Static", 
                                    "Disagreement\navoidance",
@@ -117,7 +117,7 @@ data %>%
   scale_shape_manual(values = c(16,15,17))+
   geom_smooth(method = lm, colour = "#bebebecc")+
   theme_light()+
-  labs(title = "Effect of link updating strategies \n on final state (IM)", x = "Final State", #change to OM for outgoing model
+  labs(title = "Effect of link updating strategies \n on final state (IM)", x = "Final State",
        y = "Minority Strategy")+
   ggpubr::rremove("legend")+
   theme(plot.title = element_text(hjust = 0.5), 
@@ -134,7 +134,7 @@ data %>%
   scale_shape_manual(values = c(16,15,17))+
   geom_smooth(method = lm, colour = "#bebebecc")+
   theme_light()+
-  labs(title = "Effect of link updating strategies \n on final state (OM)", x = "Final State", #change to OM for outgoing model
+  labs(title = "Effect of link updating strategies \n on final state (OM)", x = "Final State",
        y = "Minority Strategy")+
   ggpubr::rremove("legend")+
   theme(plot.title = element_text(hjust = 0.5), 
@@ -142,4 +142,23 @@ data %>%
         axis.title.y = element_text(vjust = +2))
 
 
+#####################################################
+#alternate density plots
+data1 <- reshape2::melt(data,id.vars= c("Stratp","Stratm"), variable.name = "Model")
 
+data1 %>%
+  ggplot(aes(x=value, y = after_stat(count)/sum(count), fill = Model))+
+  geom_density(alpha=0.1)+
+  facet_grid(Stratp~Stratm)+
+  geom_vline(aes(xintercept=0), color = "#000000", linetype = "dotted")+
+  xlim(-1,1)+
+  scale_fill_manual(values = c("green","purple"))+
+  # geom_smooth(method = lm, colour = "#bebebecc")+
+  theme_light()+
+  labs(title = "Effect of link updating strategies \n on final state (IM)", x = "Final State",
+       y = "Normalized density",
+       subtitle = "Minority Strategy")+
+  # ggpubr::rremove("legend")+
+  theme(plot.title = element_text(hjust = 0.5), 
+        plot.subtitle = element_text(hjust = 0.5), text = element_text(size = 17),
+        axis.title.y = element_text(vjust = +2))
