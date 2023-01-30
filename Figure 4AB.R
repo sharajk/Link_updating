@@ -17,7 +17,7 @@ T <- 10000 #number of time steps
 n0 <- 0.8 #majority proportion
 
 #obtaining random points from area where stalemates occur
-num <- 100 #number of points to obtain
+num <- 1500 #number of points to obtain
 bplus <- runif(num, min=0, max= 0.2) 
 bminus <- numeric(length(bplus))
 
