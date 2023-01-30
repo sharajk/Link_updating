@@ -63,7 +63,7 @@ conom <- none[none$om_out > 0.8,]
 none %>%
   ggplot(aes(x=BM, y=BP, fill=im_out))+
   geom_tile(color = "grey") +
-  geom_tile(data = conim, color = "yellow", size = 1, linetype = "dotted")+
+  geom_tile(data = conim, color = "yellow", linewidth = 1, linetype = "dotted")+
   scale_fill_gradient2(high = scales::muted("red"),low = scales::muted("blue"),
                        mid = "gray", guide = "colourbar", limits = c(-1,1))+
   theme_classic(base_size = 17)+
@@ -81,7 +81,7 @@ none %>%
 none %>%
   ggplot(aes(x=BM, y=BP, fill=om_out))+
   geom_tile(color = "grey") +
-  geom_tile(data = conom, color = "yellow", size = 1, linetype = "dotted")+
+  geom_tile(data = conom, color = "yellow", linewidth = 1, linetype = "dotted")+
   scale_fill_gradient2(high = scales::muted("red"),low = scales::muted("blue"),
                        mid = "gray", guide = "colourbar", limits = c(-1,1))+
   theme_classic(base_size = 17)+
