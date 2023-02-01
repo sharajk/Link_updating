@@ -1,6 +1,8 @@
 #Code for Figure S2: influence of link updating on outcomes 
 #(when net preferences are similar for both subpopulations)
-
+source("Speed.R")
+source("Incoming_model.R")
+source("Outgoing_model.R")
 
 #######################################
   

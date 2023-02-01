@@ -2,11 +2,9 @@
 
 #Loading required model functions (incoming model, outgoing model, consensus speeds)
 
-library(devtools)
-library(roxygen2)
-source_url("https://raw.githubusercontent.com/sharajk/Link_updating/057a5a7a4ce6f72fe06ea31e607518a09fbaba71/Speed.R")
-source_url("https://raw.githubusercontent.com/sharajk/Link_updating/main/Incoming%20model.R")
-source_url("https://raw.githubusercontent.com/sharajk/Link_updating/main/Outgoing%20model.R")
+source("Speed.R")
+source("Incoming_model.R")
+source("Outgoing_model.R")
 
 ###############################
 
@@ -17,7 +15,7 @@ T <- 10000 #number of time steps
 n0 <- 0.8 #majority proportion
 
 #obtaining random points from area where stalemates occur
-num <- 100 #number of points to obtain
+num <- 1500 #number of points to obtain
 bplus <- runif(num, min=0, max= 0.2) 
 bminus <- numeric(length(bplus))
 
@@ -79,15 +77,15 @@ for (j in 1:nrow(egd))
 
 egd <- egd[,c(1,2,3,4)]
 
-colnames(egd) <- c("Stratp", "Stratm", "IM","OM")
+colnames(egd) <- c("Stratp", "Stratm", "IM_Mf","OM_Mf")
 
 egd$Stratp <- factor(egd$Stratp, labels = c("Static", 
-                                   "Disagreement\navoidance",
-                                   "Agreement\navoidance"))
+                                   "Disagreement\navoiding",
+                                   "Agreement\navoiding"))
 
 egd$Stratm <- factor(egd$Stratm, labels = c("Static", 
-                                   "Disagreement\navoidance",
-                                   "Agreement\navoidance"))
+                                   "Disagreement\navoiding",
+                                   "Agreement\navoiding"))
 
 # save(egd, file= "Strat_bias.RData") #if you want to save the file
 
@@ -101,10 +99,10 @@ library(dplyr)
 data <- egd
 
 data$Stratm <- factor(data$Stratm, levels = c("Static",
-                                              "Disagreement\navoidance", 
-                                              "Agreement\navoidance"))
-data$Stratp <- factor(data$Stratp, levels = c("Agreement\navoidance",
-                                              "Disagreement\navoidance", 
+                                              "Disagreement\navoiding", 
+                                              "Agreement\navoiding"))
+data$Stratp <- factor(data$Stratp, levels = c("Agreement\navoiding",
+                                              "Disagreement\navoiding", 
                                               "Static"))
 
 #Incoming model
@@ -159,6 +157,6 @@ data1 %>%
        y = "Normalized density",
        subtitle = "Minority Strategy")+
   # ggpubr::rremove("legend")+
-  theme(plot.title = element_text(hjust = 0.5), 
+  theme(plot.title = element_text(hjust = 0.5),
         plot.subtitle = element_text(hjust = 0.5), text = element_text(size = 17),
         axis.title.y = element_text(vjust = +2))

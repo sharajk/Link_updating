@@ -1,6 +1,10 @@
 #Code for Figure S3: influence of disagreement avoidant
 #link updating on consensus speeds (facets vary stubbornness)
 
+source("Speed.R")
+source("Incoming_model.R")
+source("Outgoing_model.R")
+
 #INPUT
 #set constant global features
 N <- 100 #total population size
