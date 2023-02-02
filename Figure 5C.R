@@ -40,15 +40,16 @@ colnames(eg) <- c("Inertia", "IM_Speed", "OM_Speed")
 
 for(i in 1:nrow(eg))
 {
-  eg$IM_Speed[i] <- CSpeed(IM(p1p,p2p,p1m,p2m,bp,bm,eg$Inertia[i],n0)$M)
-  eg$OM_Speed[i] <- CSpeed(OM(p1p,p2p,p1m,p2m,bp,bm,eg$Inertia[i],n0)$M)
-  print(i)
+  print(paste("Currently considering case", i, "of", nrow(eg)))
+  eg$IM_Speed[i] <- CSpeed(IM(p1p, p2p, p1m, p2m, bp, bm, eg$Inertia[i], n0)$M)
+  eg$OM_Speed[i] <- CSpeed(OM(p1p, p2p, p1m, p2m, bp, bm, eg$Inertia[i], n0)$M)
 }
 
 ###############################
 
 #cleaning and labeling data for visualization
-data <- data.frame("Inertia"=rep(eg$Inertia,2),"Model"=c(rep("Incoming",length(eg$Inertia)), rep("Outgoing",length(eg$Inertia))),
+data <- data.frame("Inertia"=rep(eg$Inertia,2),
+                    "Model"=c(rep("Incoming",length(eg$Inertia)), rep("Outgoing",length(eg$Inertia))),
                    "Speed"=c(eg$IM_Speed, eg$OM_Speed))
 ###############################
 
@@ -72,3 +73,5 @@ data %>%
        y = "Speed to majority consensus" ) +
   theme(plot.title = element_text(hjust = 0.5), text = element_text(size = 20),
         legend.text = element_text(size=16), legend.title = element_text(size=17))
+
+# (Pranav) Works perfectly

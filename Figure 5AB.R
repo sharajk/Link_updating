@@ -1,5 +1,7 @@
 #Code for Figure 5A: influence of disagreement avoidant
 #link updating on consensus speeds
+# FIXME: (Pranav) The code threw up some warnings complaining that integration was not successful.
+# Needs some bug-fixing and re-running.
 
 #Loading required model functions (incoming model, outgoing model, consensus speeds)
 
@@ -81,15 +83,16 @@ EG2m <- expand.grid(
 
 #the following for loop generates the data
 for (i in 1:nrow(EG1m))
-{
-  EG1p$Var5[i] <- CSpeed(IM(EG1p$Var1[i],EG1p$Var2[i],EG1p$Var3[i],EG1p$Var4[i],bp,bm,l,n0)$M)
-  EG1p$Var6[i] <- CSpeed(OM(EG1p$Var1[i],EG1p$Var2[i],EG1p$Var3[i],EG1p$Var4[i],bp,bm,l,n0)$M)
+{ 
+  print(paste("Currently considering case", i, "of", nrow(EG1m)))
+  EG1p$Var5[i] <- CSpeed(IM(EG1p$Var1[i], EG1p$Var2[i], EG1p$Var3[i], EG1p$Var4[i], bp, bm, l, n0)$M)
+  EG1p$Var6[i] <- CSpeed(OM(EG1p$Var1[i], EG1p$Var2[i], EG1p$Var3[i], EG1p$Var4[i], bp, bm, l, n0)$M)
   
-  EG1m$Var5[i] <- CSpeed(IM(EG1m$Var1[i],EG1m$Var2[i],EG1m$Var3[i],EG1m$Var4[i],bp,bm,l,n0)$M)
-  EG1m$Var6[i] <- CSpeed(OM(EG1m$Var1[i],EG1m$Var2[i],EG1m$Var3[i],EG1m$Var4[i],bp,bm,l,n0)$M)
+  EG1m$Var5[i] <- CSpeed(IM(EG1m$Var1[i], EG1m$Var2[i], EG1m$Var3[i], EG1m$Var4[i], bp, bm, l, n0)$M)
+  EG1m$Var6[i] <- CSpeed(OM(EG1m$Var1[i], EG1m$Var2[i], EG1m$Var3[i], EG1m$Var4[i], bp, bm, l, n0)$M)
   
-  EG2p$Var5[i] <- CSpeed(IM(EG2p$Var1[i],EG2p$Var2[i],EG2p$Var3[i],EG2p$Var4[i],bp,bm,l,n0)$M)
-  EG2p$Var6[i] <- CSpeed(OM(EG2p$Var1[i],EG2p$Var2[i],EG2p$Var3[i],EG2p$Var4[i],bp,bm,l,n0)$M)
+  EG2p$Var5[i] <- CSpeed(IM(EG2p$Var1[i], EG2p$Var2[i], EG2p$Var3[i], EG2p$Var4[i], bp, bm, l, n0)$M)
+  EG2p$Var6[i] <- CSpeed(OM(EG2p$Var1[i], EG2p$Var2[i], EG2p$Var3[i], EG2p$Var4[i], bp, bm, l, n0)$M)
   
   EG2m$Var5[i] <- CSpeed(IM(EG2m$Var1[i],EG2m$Var2[i],EG2m$Var3[i],EG2m$Var4[i],bp,bm,l,n0)$M)
   EG2m$Var6[i] <- CSpeed(OM(EG2m$Var1[i],EG2m$Var2[i],EG2m$Var3[i],EG2m$Var4[i],bp,bm,l,n0)$M)
@@ -129,7 +132,7 @@ das %>%
 subpopulation")+
   scale_color_manual(values = c("#FF0000","#0000FF"), name = "Model")+
   labs(title = "Effect of disagreement avoidance\non convergence speed", 
-       x = expression(paste('Disagreement avoidance probability ',(phi[2]))), 
+       x = expression(paste('Disagreement avoidance probability ',(phi[2]))),
        y = "Speed to majority consensus" ) +
   theme(plot.title = element_text(hjust = 0.5), text = element_text(size = 20),
         legend.text = element_text(size=16), legend.title = element_text(size=17))
@@ -138,7 +141,7 @@ subpopulation")+
 #Agreement avoidance variation (left)
 
 aas %>%
-  ggplot(aes(x=aprob, y=Speed, linetype = Model, colour = sub))+
+  ggplot(aes(x=aprob, y=Speed, linetype=Model, colour=sub))+
   scale_y_log10(limits = c(10^-3.25, 10^-1.3),
                 breaks = trans_breaks("log10", function(x) 10^x),
                 labels = trans_format("log10", math_format(10^.x))) +

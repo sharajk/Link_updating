@@ -59,7 +59,7 @@ for (i in 1:nrow(eg))
   eg$om_out[i] <- OM(eg$Var1[i], eg$Var1.1[i], eg$Var2[i], eg$Var2.1[i], eg$BP[i], eg$Var3[i], eg$L[i], n0)$M[T]
   if((ceiling(i/100) - i/100) == 0)
   {
-    print(i) #indicating progress
+    print(paste("Currently finishing step ", i, " of ", length(eg$Var1))) #indicating progress
   }
 }
 

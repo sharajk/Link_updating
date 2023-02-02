@@ -55,30 +55,35 @@ eg <- data.frame(eg1,eg2)
 
 for (i in 1:nrow(eg))
 {
-  eg$Var5[i] <- IM(eg$Var3[i], eg$Var3.1[i], eg$Var4[i], eg$Var4.1[i], eg$Var1[i], eg$Var2[i],l,n0)$M[T]
-  eg$Var6[i] <- OM(eg$Var3[i], eg$Var3.1[i], eg$Var4[i], eg$Var4.1[i], eg$Var1[i], eg$Var2[i],l,n0)$M[T]
+  eg$Var5[i] <- IM(eg$Var3[i], eg$Var3.1[i], eg$Var4[i], eg$Var4.1[i], eg$Var1[i], eg$Var2[i], l, n0)$M[T]
+  eg$Var6[i] <- OM(eg$Var3[i], eg$Var3.1[i], eg$Var4[i], eg$Var4.1[i], eg$Var1[i], eg$Var2[i], l, n0)$M[T]
 }
 
 ##############################
 
 #labeling and cleaning the data for visualization
 
-data <- data.frame("BP"=eg$Var1,"BM"=eg$Var2,"Stratp"=NA,"Stratm"=NA,"IM_Mf"=eg$Var5,"OM_Mf"=eg$Var6)
+data <- data.frame("BP"=eg$Var1,
+                    "BM"=eg$Var2,
+                    "Stratp"=NA,
+                    "Stratm"=NA,
+                    "IM_Mf"=eg$Var5,
+                    "OM_Mf"=eg$Var6)
 
 for(j in 1:nrow(data))
 {
-  data$Stratp[j] <- paste(eg$Var3[j], eg$Var3.1[j], sep = ",")
-  data$Stratm[j] <- paste(eg$Var4[j], eg$Var4.1[j], sep = ",")
+  data$Stratp[j] <- paste(eg$Var3[j], eg$Var3.1[j], sep=",")
+  data$Stratm[j] <- paste(eg$Var4[j], eg$Var4.1[j], sep=",")
 }
 
-data$Stratp <- factor(data$Stratp, 
-                      labels = c("Static", "Disagreement\navoidance", "Agreement\navoidance"))
+data$Stratp <- factor(data$Stratp
+                      labels=c("Static", "Disagreement\navoidance", "Agreement\navoidance"))
 
-data$Stratp <- factor(data$Stratp, 
-                      levels = c("Agreement\navoidance","Disagreement\navoidance", "Static"))
+data$Stratp <- factor(data$Stratp,
+                      levels=c("Agreement\navoidance","Disagreement\navoidance", "Static"))
 
-data$Stratm <- factor(data$Stratm, 
-                      labels = c("Static", "Disagreement\navoidance", "Agreement\navoidance"))
+data$Stratm <- factor(data$Stratm,
+                      labels=c("Static", "Disagreement\navoidance", "Agreement\navoidance"))
 
 # save(data, file= "Stub_hm.RData")
 

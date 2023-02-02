@@ -44,8 +44,9 @@ eg <- expand.grid(
 #the following for loop generates the data
 for (i in 1:nrow(eg))
 {
-  eg$Var3[i] <- IM(p1p,eg$Var1[i],p1m,eg$Var2[i],bp,bm,l,n0)$M[T]
-  eg$Var4[i] <- OM(p1p,eg$Var1[i],p1m,eg$Var2[i],bp,bm,l,n0)$M[T]
+  print(paste("Currently on step ", i, "of", nrow(eg)))
+  eg$Var3[i] <- IM(p1p, eg$Var1[i], p1m, eg$Var2[i], bp, bm, l, n0)$M[T]
+  eg$Var4[i] <- OM(p1p, eg$Var1[i], p1m, eg$Var2[i], bp, bm, l, n0)$M[T]
 }
 
 ###############################
@@ -106,3 +107,5 @@ df%>%
   )+
   ggpubr::rremove("grid")+
   ggpubr::border()
+
+# (Pranav) Seems to work fine, no issues

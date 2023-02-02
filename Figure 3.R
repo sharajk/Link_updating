@@ -1,4 +1,6 @@
 #Code for figure 3: Influence of stubbornness on outcomes (for static network)
+# FIXME: (Pranav) This code generates 2 figures, which are not exactly identical to the
+# figure in the manuscript. Maybe write what modifications were made from here?
 
 #Loading required model functions (incoming model, outgoing model, consensus speeds)
 
@@ -28,8 +30,8 @@ l <- 0.3
 # input for stubbornness
 eg <- expand.grid(
   # varying stubbornness:
-  BP = seq(0.05, 0.95, by = 0.05),
-  BM = seq(0.05, 0.95, by = 0.05),
+  BP = seq(0.05, 0.95, by=0.05),
+  BM = seq(0.05, 0.95, by=0.05),
   im_out = NA,
   om_out = NA,
   stringsAsFactors = TRUE,
@@ -42,8 +44,9 @@ eg <- expand.grid(
 
 for (i in 1:nrow(eg))
 {
-  eg$im_out[i] <- IM(p1p,p2p,p1m,p2m,eg$BP[i],eg$BM[i],l,n0)$M[T]
-  eg$om_out[i] <- OM(p1p,p2p,p1m,p2m,eg$BP[i],eg$BM[i],l,n0)$M[T]
+  print(paste("Working on case ", i, " of ", length(eg$BP)))
+  eg$im_out[i] <- IM(p1p, p2p, p1m, p2m, eg$BP[i], eg$BM[i], l, n0)$M[T]
+  eg$om_out[i] <- OM(p1p, p2p, p1m, p2m, eg$BP[i], eg$BM[i], l, n0)$M[T]
 }
 
 ##############################
