@@ -42,6 +42,7 @@ eg <- expand.grid(
 
 for (i in 1:nrow(eg))
 {
+  print(paste("Currently considering case", i, "of", nrow(eg)))
   eg$Var5[i] <- IM(p1p, eg$Var1[i], p1m, eg$Var2[i], eg$Var3[i], eg$Var4[i],l,n0)$M[T]
   eg$Var6[i] <- OM(p1p, eg$Var1[i], p1m, eg$Var2[i], eg$Var3[i], eg$Var4[i],l,n0)$M[T]
 }
@@ -55,7 +56,7 @@ colnames(eg) <- c("phi2p", "phi2m", "BP", "BM", "IM_Mf","OM_Mf")
 library(ggplot2)
 library(dplyr)
 
-eg$BP <- factor(eg$BP, levels = c(0.95,0.5,0.2,0.05))
+eg$BP <- factor(eg$BP, levels=c(0.95, 0.5, 0.2, 0.05))
 
 conim <- eg[abs(eg$IM_Mf) > 0.8,]
 conom <- eg[abs(eg$OM_Mf) > 0.8,]
@@ -93,3 +94,5 @@ State", subtitle = expression(paste("Minority stubbornness ", (beta['-']) )))+
   theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), text = element_text(size=14))+
   ggpubr::rremove("grid")+ggpubr::border()+
   theme(legend.position = "none")
+
+# FIXME: (Pranav) This code generates two images, while 6 need to be generated.

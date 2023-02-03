@@ -19,7 +19,7 @@ bminus <- numeric(length(bplus))
 
 op <- runif(length(bplus), min = 0.9, max = 1.1)
 for (i in 1:length(op))
-{
+{ 
   bminus[i] <- (n0/(1-n0))*op[i]*bplus[i]
 }
 
@@ -53,12 +53,9 @@ eg <- data.frame(eg1,eg2)
 
 for (i in 1:nrow(eg))
 {
+  print(paste("Currently considering case", i, "of", nrow(eg)))
   eg$Var5[i] <- IM(eg$Var1[i], eg$Var1.1[i], eg$Var2[i], eg$Var2.1[i], eg$BP[i], eg$Var3[i], eg$L[i], n0)$M[T]
   eg$Var6[i] <- OM(eg$Var1[i], eg$Var1.1[i], eg$Var2[i], eg$Var2.1[i], eg$BP[i], eg$Var3[i], eg$L[i], n0)$M[T]
-  if((ceiling(i/500) - i/500) == 0)
-  {
-    print(i) #indicating progress
-  }
 }
 
 ###############################
@@ -77,11 +74,11 @@ egd <- egd[,c(1,2,3,4)]
 
 colnames(egd) <- c("Stratp", "Stratm", "IM_Mf","OM_Mf")
 
-egd$Stratp <- factor(egd$Stratp, labels = c("Static", 
+egd$Stratp <- factor(egd$Stratp, labels=c("Static", 
                                             "Disagreement\navoidance",
                                             "Agreement\navoidance"))
 
-egd$Stratm <- factor(egd$Stratm, labels = c("Static", 
+egd$Stratm <- factor(egd$Stratm, labels=c("Static", 
                                             "Disagreement\navoidance",
                                             "Agreement\navoidance"))
 

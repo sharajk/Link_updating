@@ -55,6 +55,7 @@ eg <- data.frame(eg1,eg2)
 
 for (i in 1:nrow(eg))
 {
+  print(paste("Currently considering case", i, "of", nrow(eg)))
   eg$Var5[i] <- IM(eg$Var3[i], eg$Var3.1[i], eg$Var4[i], eg$Var4.1[i], eg$Var1[i], eg$Var2[i], l, n0)$M[T]
   eg$Var6[i] <- OM(eg$Var3[i], eg$Var3.1[i], eg$Var4[i], eg$Var4.1[i], eg$Var1[i], eg$Var2[i], l, n0)$M[T]
 }
@@ -76,7 +77,7 @@ for(j in 1:nrow(data))
   data$Stratm[j] <- paste(eg$Var4[j], eg$Var4.1[j], sep=",")
 }
 
-data$Stratp <- factor(data$Stratp
+data$Stratp <- factor(data$Stratp,
                       labels=c("Static", "Disagreement\navoidance", "Agreement\navoidance"))
 
 data$Stratp <- factor(data$Stratp,
@@ -137,3 +138,6 @@ data %>%
         legend.position = "bottom", legend.key.width = unit(2,"cm"),
         legend.title = element_text(vjust = 0.9))+
   ggpubr::rremove("grid")+ggpubr::border()
+
+# FIXME: (Pranav) This generates only two images (in place of 6 in the manuscript).
+# Also there is some bug in the second image, some plots are empty.
