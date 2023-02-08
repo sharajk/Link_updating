@@ -90,18 +90,8 @@ IM <- function(p1p, p2p, p1m, p2m, bp, bm, l, n0)
     
     U <- array (dim = c(22, 4)) #N * displacement vector array with 22 possible interactions, 4 components
     P <- numeric(22) #probability vector for each interaction
-    
-    eps <- 0.01 #epsilon value to avoid convergence issues
-    # TODO: (Pranav) I think it makes sense to replace the below block of if conditions in a function, so we
-    # call it like this: if (in_boundary(M, x, y, z){...})
-    if ((M < 1 - eps) & 
-        (M > -1 + eps) & 
-        (x > eps) & 
-        (y > eps) & 
-        (z > eps) & 
-        (x < L - eps) &
-        (y < L - eps) &
-        (z < L - eps))
+
+    if(boundary(M,x,y,z))
     {
       
       #Displacement vector for each reaction
@@ -165,7 +155,7 @@ IM <- function(p1p, p2p, p1m, p2m, bp, bm, l, n0)
     }
   }
   
-  out <- ode(t,y = vars, parms = params, func = IM_ode)
+  out <- ode(t,y = vars, parms = params, func = IM_ode, method = "rk4")
   out <- as.data.frame(out[,c(2,3,4,5,1)])
   colnames(out) <- c("M","x","y","z","time")
 

@@ -1,13 +1,13 @@
-#Code for Figure 5A: influence of disagreement avoidant
-#link updating on consensus speeds
-# FIXME: (Pranav) The code threw up some warnings complaining that integration was not successful.
-# Needs some bug-fixing and re-running.
+#Influence of disagreement/agreement avoiding on majority consensus speeds
+#Varying majority (red) and minority (blue) disagreement (A) and agreement (B) avoidance probabilities in x axis 
+#to obtain convergence speeds in Y axis
 
-#Loading required model functions (incoming model, outgoing model, consensus speeds)
+#Loading required model functions (incoming model, outgoing model, consensus speeds,boundary checks)
 
 source("Speed.R")
 source("Incoming_model.R")
 source("Outgoing_model.R")
+source("If_boundary.R")
 
 ##############################
 
@@ -111,6 +111,9 @@ das <- data.frame("dprob"=rep(variation,4), "sub" = c(rep("Majority",length(vari
                   "Model" = c(rep("Incoming", 2*length(variation)), rep("Outgoing", 2*length(variation))),
                   "Speed" = c(EG2p$Var5,EG2m$Var5,EG2p$Var6,EG2m$Var6))
 
+data <- list(das,aas)
+names(data) <- c("Disagreement avoidance","Agreement avoidance")
+
 ###############################
 #visualizing the data
 
@@ -120,7 +123,7 @@ library(scales)
 
 #Disagreement avoidance variation (left)
 
-das %>%
+data[[1]] %>%
   ggplot(aes(x=dprob, y=Speed, linetype = Model, colour = sub))+
   scale_y_log10(limits = c(10^-3.25, 10^-1.3),
                 breaks = trans_breaks("log10", function(x) 10^x),
@@ -140,7 +143,7 @@ subpopulation")+
 
 #Agreement avoidance variation (left)
 
-aas %>%
+data[[2]] %>%
   ggplot(aes(x=aprob, y=Speed, linetype=Model, colour=sub))+
   scale_y_log10(limits = c(10^-3.25, 10^-1.3),
                 breaks = trans_breaks("log10", function(x) 10^x),

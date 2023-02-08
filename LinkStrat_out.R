@@ -1,10 +1,13 @@
-#Code for Figure 4A: influence of link updating on outcomes (when net preferences are similar for both subpopulations)
+#Influence of link updating on outcomes (when net preferences are similar for both subpopulations)
+#Varying link updating tendencies for majority and minority along y and x axes respectively
+#to obtain final states when net preference for both subpopulations are similar
 
-#Loading required model functions (incoming model, outgoing model, consensus speeds)
+#Loading required model functions (incoming model, outgoing model, consensus speeds,boundary checks)
 
 source("Speed.R")
 source("Incoming_model.R")
 source("Outgoing_model.R")
+source("If_boundary.R")
 
 ###############################
 
@@ -149,6 +152,8 @@ data1 %>%
   geom_density(alpha=0.1)+
   facet_grid(Stratp~Stratm)+
   geom_vline(aes(xintercept=0), color = "#000000", linetype = "dotted")+
+  geom_vline(aes(xintercept=0.8), color = "yellow", linetype = "dotted")+
+  geom_vline(aes(xintercept=-0.8), color = "yellow", linetype = "dotted")+
   xlim(-1,1)+
   scale_fill_manual(values = c("green","purple"))+
   # geom_smooth(method = lm, colour = "#bebebecc")+

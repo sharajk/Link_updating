@@ -1,9 +1,13 @@
-#Code for Figure S3: influence of disagreement avoidant
-#link updating on consensus speeds (facets vary stubbornness)
+#Influence of disagreement avoiding probabilities on consensus speeds 
+#Varying majority (x) and minority (-) disagreement avoiding probabilities (axes) 
+#and stubbornness (facets) to obtain convergence speeds to majority (red) or minority (blue) consensus 
+
+#Loading required model functions (incoming model, outgoing model, consensus speeds,boundary checks)
 
 source("Speed.R")
 source("Incoming_model.R")
 source("Outgoing_model.R")
+source("If_boundary.R")
 
 #INPUT
 #set constant global features
@@ -13,7 +17,7 @@ n0 <- 0.8 #majority proportion
 
 #agreement avoidant rewiring parameters 
 p1p <- 0.5 #phi1+
-p2p <- 0.5 #phi2+
+p1m <- 0.5 #phi1-
 
 #inertia
 l <- 0.3
@@ -22,7 +26,7 @@ l <- 0.3
 #and stubbornnness
 
 ###varying disagreement avoidance
-variation <- seq(0,0.8,0.05)
+variation <- seq(0,0.8,0.1)
 
 eg <- expand.grid(
   P2P <- variation,
@@ -42,7 +46,6 @@ eg <- expand.grid(
 for (i in 1:nrow(eg))
 {
   print(paste("Currently considering case", i, "of", nrow(eg)))
-  # FIXME: (Pranav) This code does not run. p1m below is undefined.
   im_Mf <- IM(p1p, eg$Var1[i], p1m, eg$Var2[i], eg$Var3[i], eg$Var4[i],l,n0)$M
   eg$Var5[i] <- CSpeed(im_Mf)*sign(im_Mf[T])
   om_Mf <- OM(p1p, eg$Var1[i], p1m, eg$Var2[i], eg$Var3[i], eg$Var4[i],l,n0)$M
@@ -51,8 +54,9 @@ for (i in 1:nrow(eg))
 
 ################################
 #cleaning and labeling data
-colnames(eg) <- c("phi2p", "phi2m", "BP", "BM", "IM_speed","OM_speed")
-eg$BP <- factor(eg$BP, levels = c(0.95, 0.5, 0.2, 0.05))
+data <- eg
+colnames(data) <- c("phi2p", "phi2m", "BP", "BM", "IM_speed","OM_speed")
+data$BP <- factor(data$BP, levels = c(0.95, 0.5, 0.2, 0.05))
 
 ################################
 
@@ -61,7 +65,7 @@ library(dplyr)
 library(scales)
 
 #Incoming model
-eg%>%
+data %>%
   ggplot(aes(x=phi2m, y=phi2p, fill=IM_speed)) +
   facet_grid(BP ~ BM) +
   geom_tile(color = "grey") +
@@ -88,7 +92,7 @@ eg%>%
   ggpubr::rremove("grid")+ggpubr::border()
 
 #Outgoing model
-eg%>%
+data %>%
   ggplot(aes(x=phi2m, y=phi2p, fill= OM_speed))+
   facet_grid(BP ~ BM)+
   geom_tile(color = "grey")+

@@ -1,11 +1,13 @@
-#Figure S5: Influence of inertia on outcomes
-#Varying stubbornness in facets and disagreement avoidance of each subpopulation
+#Influence of inertia on outcomes
+#Varying inertia on x axis to obtain final states on y axis
+#Stubbornness is varied in facets and disagreement avoidance of each subpopulation is also varied
 
-#Loading required model functions (incoming model, outgoing model, consensus speeds)
+#Loading required model functions (incoming model, outgoing model, consensus speeds,boundary checks)
 
 source("Speed.R")
 source("Incoming_model.R")
 source("Outgoing_model.R")
+source("If_boundary.R")
 ##############################
 
 #INPUT
@@ -68,8 +70,8 @@ for(i in 1:nrow(eg))
 
 data$Strategy <- factor(data$Strategy, 
                         labels=c("Static",
-                                    "Disagreement avoidant minority",
-                                    "Disagreement avoidant majority"))
+                                    "Disagreement avoiding minority",
+                                    "Disagreement avoiding majority"))
 
 ################################
 #visualizing data
@@ -108,4 +110,4 @@ data %>%
   theme(legend.position = "bottom")+
   ggpubr::rremove("grid")+ggpubr::border()
 
-# (Pranav): Seems to work more-or-less fine. One panel in Figure B (left, middle) is a bit different from in the manuscript.
+

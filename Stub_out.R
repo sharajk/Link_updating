@@ -1,12 +1,12 @@
-#Code for figure 3: Influence of stubbornness on outcomes (for static network)
-# FIXME: (Pranav) This code generates 2 figures, which are not exactly identical to the
-# figure in the manuscript. Maybe write what modifications were made from here?
+#Influence of stubbornness on outcomes (for static network) - vary majority and minority stubbornness across y and x
+#axes respectively and obtain final state
 
-#Loading required model functions (incoming model, outgoing model, consensus speeds)
+#Loading required model functions (incoming model, outgoing model, consensus speeds,boundary checks)
 
 source("Speed.R")
 source("Incoming_model.R")
 source("Outgoing_model.R")
+source("If_boundary.R")
 
 ##############################
 
@@ -56,12 +56,12 @@ for (i in 1:nrow(eg))
 library(ggplot2)
 library(dplyr)
 
-none <- eg
+data <- eg
 conim <- none[none$im_out > 0.8,]
 conom <- none[none$om_out > 0.8,]
 
 #Incoming model
-none %>%
+data %>%
   ggplot(aes(x=BM, y=BP, fill=im_out))+
   geom_tile(color = "grey") +
   geom_tile(data = conim, color = "yellow", linewidth = 1, linetype = "dotted")+
@@ -79,7 +79,7 @@ none %>%
   ggpubr::rremove("grid")+ggpubr::border()
 
 #Outgoing model
-none %>%
+data %>%
   ggplot(aes(x=BM, y=BP, fill=om_out))+
   geom_tile(color = "grey") +
   geom_tile(data = conom, color = "yellow", linewidth = 1, linetype = "dotted")+

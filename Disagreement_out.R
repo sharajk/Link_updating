@@ -1,11 +1,12 @@
-#Code for Figure 4B: influence of disagreement avoidant
-#link updating on consensus outcomes (when net preferences are similar for both subpopulations)
+#Influence of disagreement avoiding link updating on consensus outcomes (when net preferences are similar for both subpopulations)
+#Varying majority and minority disagreement avoiding probabilities while keeping agreement avoiding probabilities constant (0 as default)
 
-#Loading required model functions (incoming model, outgoing model, consensus speeds)
+#Loading required model functions (incoming model, outgoing model, consensus speeds,boundary checks)
 
 source("Speed.R")
 source("Incoming_model.R")
 source("Outgoing_model.R")
+source("If_boundary.R")
 
 ##############################
 
@@ -62,12 +63,12 @@ colnames(eg) <- c("phi2p", "phi2m", "IM_Mf","OM_Mf")
 library(ggplot2)
 library(dplyr)
 
-df <- eg
-conim <- df[abs(df$IM_Mf) > 0.8,]
-conom <- df[abs(df$OM_Mf) > 0.8,]
+data <- eg
+conim <- data[abs(data$IM_Mf) > 0.8,]
+conom <- data[abs(data$OM_Mf) > 0.8,]
 
 #Incoming model
-df%>%
+data %>%
   ggplot(aes(x=phi2m, y=phi2p, fill=IM_Mf))+
   geom_tile(color = "grey")+
   geom_tile(data = conim, color = "yellow", linewidth = 1.5, linetype = "dotted")+
@@ -88,7 +89,7 @@ df%>%
   ggpubr::border()
 
 #Outgoing model
-df%>%
+data %>%
   ggplot(aes(x=phi2m, y=phi2p, fill=OM_Mf))+
   geom_tile(color = "grey")+
   geom_tile(data = conom, color = "yellow", linewidth = 1.5, linetype = "dotted")+
@@ -107,5 +108,3 @@ df%>%
   )+
   ggpubr::rremove("grid")+
   ggpubr::border()
-
-# (Pranav) Seems to work fine, no issues
