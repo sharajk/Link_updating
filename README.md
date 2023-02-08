@@ -25,3 +25,5 @@ Structure of the repository:
 - Figure S4: Inertia_out_Sup.RData
 - Figure S5A: Inertia_speed_Sup.RData
 - Figure S5B: Stub_speed_Sup.RData
+
+Slight cosmetic changes have been made to the figures obtained for better visualisation. The codes are a work in progress right now for journal submission.
