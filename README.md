@@ -8,11 +8,11 @@ The authors of the manuscript are: Sharaj Kunjar*, Ariana Strandburg-Peshkin, Mo
 The packages used in the codes are: ggplot2, dplyr, ggpubr, deSolve and scales
 
 Structure of the repository:
-*Incoming_model.R and Outgoing_model.R contain the functions that generate all the simulations on the mathematical models described in the manuscript.
-*CSpeed.R contains the function that provides convergence speeds to consensus given the time evolution of the state variables.
-*If_boundary.R contains the function that checks whether the state variable lie inside the imposed boundary conditions.
-*Synth_data folder contains all the generated synthetic data that is used to obtain the figures. The names of the R dataframes correspond to the names of the R scripts that generated them.
-*R Scripts and dataframes matched to the figure labels in the manuscript:
+* Incoming_model.R and Outgoing_model.R contain the functions that generate all the simulations on the mathematical models described in the manuscript.
+* Speed.R contains the function that provides convergence speeds to consensus given the time evolution of the state variables.
+* If_boundary.R contains the function that checks whether the state variable lie inside the imposed boundary conditions.
+* Synth_data folder contains all the generated synthetic data that is used to obtain the figures. The names of the R dataframes correspond to the names of the R scripts that generated them.
+* R Scripts and dataframes matched to the figure labels in the manuscript:
 - Figure 3: Stub_out.RData
 - Figure 4AB: LinkStrat_out.RData
 - Figure 4CD: Disagreement_out.RData
