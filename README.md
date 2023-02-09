@@ -5,7 +5,7 @@ Find the preprint here: https://doi.org/10.48550/arXiv.2212.02880
 
 The authors of the manuscript are: Sharaj Kunjar*, Ariana Strandburg-Peshkin, Mohit Kumar Jolly, Sumantra Sarkar, Pranav Minasandra, Helge Giese and Nico Gradwohl.
 
-*author of correspondence (sharaj.kunjar@gmail.com)
+*corresponding author (sharaj.kunjar@gmail.com)
 
 The packages used in the codes are: ggplot2, dplyr, ggpubr, deSolve and scales
 
