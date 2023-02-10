@@ -123,7 +123,6 @@ data1 %>%
   geom_vline(aes(xintercept=-0.8), color = "#8B8000", linetype = "dashed")+
   xlim(-1,1)+
   scale_fill_manual(values = c("green","purple"))+
-  # geom_smooth(method = lm, colour = "#bebebecc")+
   theme_light()+
   labs(title = "Effect of link updating strategies \n on final state", x = "Final State",
        y = "Minority Strategy",
@@ -131,7 +130,8 @@ data1 %>%
   # ggpubr::rremove("legend")+
   theme(plot.title = element_text(hjust = 0.5),
         plot.subtitle = element_text(hjust = 0.5), text = element_text(size = 25),
-        axis.title.y = element_text(vjust = +2))
+        axis.title.y = element_text(vjust = +2),
+        legend.position = "bottom")
 
 #####################################################
 #alternate density plots
