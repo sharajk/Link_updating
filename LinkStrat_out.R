@@ -98,70 +98,62 @@ egd$Stratm <- factor(egd$Stratm, labels = c("Static",
 
 library(ggplot2)
 library(dplyr)
+library(ggridges)
 
 data <- egd
 
 data$Stratm <- factor(data$Stratm, levels = c("Static",
                                               "Disagreement\navoiding", 
                                               "Agreement\navoiding"))
-data$Stratp <- factor(data$Stratp, levels = c("Agreement\navoiding",
+data$Stratp <- factor(data$Stratp, levels = c("Static",
                                               "Disagreement\navoiding", 
-                                              "Static"))
+                                              "Agreement\navoiding"))
 
-#Incoming model
-data %>%
-  ggplot(aes(x=IM_Mf, y = Stratm))+
-  facet_grid(rows = vars(Stratp))+
-  geom_vline(aes(xintercept=0), color = "#000000", linetype = "dotted")+
-  xlim(-1,1)+
-  stat_summary(fun =mean, geom="point", aes(shape= Stratm), size=3, fill = "black")+
-  scale_shape_manual(values = c(16,15,17))+
-  geom_smooth(method = lm, colour = "#bebebecc")+
-  theme_light()+
-  labs(title = "Effect of link updating strategies \n on final state (IM)", x = "Final State",
-       y = "Minority Strategy")+
-  ggpubr::rremove("legend")+
-  theme(plot.title = element_text(hjust = 0.5), 
-        plot.subtitle = element_text(hjust = 0.5), text = element_text(size = 17),
-        axis.title.y = element_text(vjust = +2))
-
-#Outgoing model
-data %>%
-  ggplot(aes(x=OM_Mf, y = Stratm))+
-  facet_grid(rows = vars(Stratp))+
-  geom_vline(aes(xintercept=0), color = "#000000", linetype = "dotted")+
-  xlim(-1,1)+
-  stat_summary(fun =mean, geom="point", aes(shape= Stratm), size=3, fill = "black")+
-  scale_shape_manual(values = c(16,15,17))+
-  geom_smooth(method = lm, colour = "#bebebecc")+
-  theme_light()+
-  labs(title = "Effect of link updating strategies \n on final state (OM)", x = "Final State",
-       y = "Minority Strategy")+
-  ggpubr::rremove("legend")+
-  theme(plot.title = element_text(hjust = 0.5), 
-        plot.subtitle = element_text(hjust = 0.5), text = element_text(size = 17),
-        axis.title.y = element_text(vjust = +2))
-
-
-#####################################################
-#alternate density plots
+######################################################
+#Ridge plots
 data1 <- reshape2::melt(data,id.vars= c("Stratp","Stratm"), variable.name = "Model")
+data1$Model <- c(rep("Incoming",nrow(data)),rep("Outgoing",nrow(data)))
 
 data1 %>%
-  ggplot(aes(x=value, y = after_stat(count)/sum(count), fill = Model))+
-  geom_density(alpha=0.1)+
-  facet_grid(Stratp~Stratm)+
+  ggplot(aes(x=value, y = Stratm, fill = Model))+
+  geom_density_ridges2(alpha=0.1, scale = 0.75)+
+  facet_grid(cols = vars(Stratp))+
   geom_vline(aes(xintercept=0), color = "#000000", linetype = "dotted")+
-  geom_vline(aes(xintercept=0.8), color = "yellow", linetype = "dotted")+
-  geom_vline(aes(xintercept=-0.8), color = "yellow", linetype = "dotted")+
+  geom_vline(aes(xintercept=0.8), color = "#8B8000", linetype = "dashed")+
+  geom_vline(aes(xintercept=-0.8), color = "#8B8000", linetype = "dashed")+
   xlim(-1,1)+
   scale_fill_manual(values = c("green","purple"))+
   # geom_smooth(method = lm, colour = "#bebebecc")+
   theme_light()+
-  labs(title = "Effect of link updating strategies \n on final state (IM)", x = "Final State",
-       y = "Normalized density",
-       subtitle = "Minority Strategy")+
+  labs(title = "Effect of link updating strategies \n on final state", x = "Final State",
+       y = "Minority Strategy",
+       subtitle = "Majority Strategy")+
   # ggpubr::rremove("legend")+
   theme(plot.title = element_text(hjust = 0.5),
         plot.subtitle = element_text(hjust = 0.5), text = element_text(size = 17),
         axis.title.y = element_text(vjust = +2))
+
+#####################################################
+#alternate density plots
+# data1 <- reshape2::melt(data,id.vars= c("Stratp","Stratm"), variable.name = "Model")
+# 
+# data1 %>%
+#   ggplot(aes(x=value, y = after_stat(count)/sum(count), fill = Model))+
+#   geom_density(alpha=0.1)+
+#   facet_grid(Stratp~Stratm)+
+#   geom_vline(aes(xintercept=0), color = "#000000", linetype = "dotted")+
+#   geom_vline(aes(xintercept=0.8), color = "#8B8000", linetype = "dashed")+
+#   geom_vline(aes(xintercept=-0.8), color = "#8B8000", linetype = "dashed")+
+#   xlim(-1,1)+
+#   scale_fill_manual(values = c("green","purple"))+
+#   # geom_smooth(method = lm, colour = "#bebebecc")+
+#   theme_light()+
+#   labs(title = "Effect of link updating strategies \n on final state", x = "Final State",
+#        y = "Normalized density",
+#        subtitle = "Minority Strategy")+
+#   # ggpubr::rremove("legend")+
+#   theme(plot.title = element_text(hjust = 0.5),
+#         plot.subtitle = element_text(hjust = 0.5), text = element_text(size = 17),
+#         axis.title.y = element_text(vjust = +2))
+
+
