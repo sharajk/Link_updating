@@ -74,9 +74,9 @@ data %>%
   ggpubr::border()+
   scale_linetype_manual(values = c("solid", "dashed"), name = "Model")+
   labs(title = "Effect of stubbornness\non convergence speed", 
-       x = expression(paste('Minority Stubbornness ',(beta['+']))), 
+       x = expression(paste('Minority Stubbornness ',(beta['-']))), 
        y = "Speed to minority consensus") +
-  theme(plot.title = element_text(hjust = 0.5), text = element_text(size = 17),
-        legend.text = element_text(size=16), legend.title = element_text(size=17))
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size = 20),
+        legend.text = element_text(size=16), legend.title = element_text(size=17),
+        legend.position = "bottom")
 
-# (Pranav) Works just fine

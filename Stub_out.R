@@ -57,8 +57,8 @@ library(ggplot2)
 library(dplyr)
 
 data <- eg
-conim <- none[none$im_out > 0.8,]
-conom <- none[none$om_out > 0.8,]
+conim <- data[data$im_out > 0.8,]
+conom <- data[data$om_out > 0.8,]
 
 #Incoming model
 data %>%
@@ -67,8 +67,8 @@ data %>%
   geom_tile(data = conim, color = "yellow", linewidth = 1, linetype = "dotted")+
   scale_fill_gradient2(high = scales::muted("red"),low = scales::muted("blue"),
                        mid = "gray", guide = "colourbar", limits = c(-1,1))+
-  theme_classic(base_size = 17)+
-  labs(title = "Effect of Stubbornness on Final state (IM)", 
+  theme_classic(base_size = 20)+
+  labs(title = "Effect of Stubbornness on Final state", 
        x= expression(paste("Minority stubbornness ",(beta['-']) )), 
        y = expression(paste("Majority stubbornness ", (beta['+']))), fill = "Final State", subtitle = "Static network")+
   theme(plot.title = element_text(hjust = 0.5),
@@ -86,7 +86,7 @@ data %>%
   scale_fill_gradient2(high = scales::muted("red"),low = scales::muted("blue"),
                        mid = "gray", guide = "colourbar", limits = c(-1,1))+
   theme_classic(base_size = 17)+
-  labs(title = "Effect of Stubbornness on Final state (OM)", 
+  labs(title = "Effect of Stubbornness on Final state", 
        x= expression(paste("Minority stubbornness ",(beta['-']) )), 
        y = expression(paste("Majority stubbornness ", (beta['+']))), fill = "Final State", subtitle = "Static network")+
   theme(plot.title = element_text(hjust = 0.5),

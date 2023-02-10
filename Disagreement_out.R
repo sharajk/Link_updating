@@ -81,8 +81,9 @@ data %>%
        fill = "Final State")+
   theme(plot.title = element_text(hjust = 0.5),
         plot.subtitle = element_text(hjust = 0.5), 
-        axis.text = element_text(size=16),
-        legend.position = "none", legend.key.width = unit(2,"cm"),
+        axis.text = element_text(size=20),
+        legend.key.width = unit(1.5,"cm"),
+        legend.position = "bottom",
         legend.title = element_text(vjust = 0.9),
   )+
   ggpubr::rremove("grid")+
@@ -102,8 +103,9 @@ data %>%
        fill = "Final State")+
   theme(plot.title = element_text(hjust = 0.5),
         plot.subtitle = element_text(hjust = 0.5), 
-        axis.text = element_text(size=16),
-        legend.position = "none", legend.key.width = unit(2,"cm"),
+        axis.text = element_text(size=20),
+        legend.key.width = unit(1.5,"cm"),
+        legend.position = "bottom",
         legend.title = element_text(vjust = 0.9),
   )+
   ggpubr::rremove("grid")+

@@ -74,5 +74,6 @@ data %>%
        x = expression(paste('Inertia ',(lambda))), 
        y = "Speed to majority consensus" ) +
   theme(plot.title = element_text(hjust = 0.5), text = element_text(size = 20),
-        legend.text = element_text(size=16), legend.title = element_text(size=17))
+        legend.text = element_text(size=16), legend.title = element_text(size=17),
+        legend.position = "bottom")
 

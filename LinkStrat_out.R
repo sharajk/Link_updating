@@ -130,7 +130,7 @@ data1 %>%
        subtitle = "Majority Strategy")+
   # ggpubr::rremove("legend")+
   theme(plot.title = element_text(hjust = 0.5),
-        plot.subtitle = element_text(hjust = 0.5), text = element_text(size = 17),
+        plot.subtitle = element_text(hjust = 0.5), text = element_text(size = 25),
         axis.title.y = element_text(vjust = +2))
 
 #####################################################

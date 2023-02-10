@@ -86,8 +86,10 @@ data %>%
 
   theme(plot.title = element_text(hjust = 0.5), 
             plot.subtitle = element_text(hjust = 0.5), 
-            text = element_text(size=14),
-            legend.position = "bottom") +
+            text = element_text(size=20),
+        axis.text.x = element_text(size=10),
+        axis.text.y = element_text(size=10),
+            legend.position = "none") +
 
   ggpubr::rremove("grid")+ggpubr::border()
 
@@ -108,6 +110,8 @@ data %>%
        subtitle = expression(paste("Minority stubbornness ", (beta['-']) )))+
   theme(plot.title = element_text(hjust = 0.5), 
         plot.subtitle = element_text(hjust = 0.5), 
-        text = element_text(size=14),
-        legend.position = "bottom")+
+        text = element_text(size=20),
+        axis.text.x = element_text(size=10),
+        axis.text.y = element_text(size=10),
+        legend.position = "none")+
   ggpubr::rremove("grid")+ggpubr::border()

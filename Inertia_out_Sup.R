@@ -91,7 +91,9 @@ data %>%
        x= expression(paste( "Inertia", (lambda) )),
        y = "Final State", subtitle = expression(paste("Minority Stubbornness ", (beta["-"] ))))+
   theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
-        text = element_text(size=20))+
+        text = element_text(size=20),
+        legend.text = element_text(size=15),
+        legend.title = element_text(size=15))+
   theme(legend.position = "bottom")+
   ggpubr::rremove("grid")+ggpubr::border()
 
@@ -106,7 +108,9 @@ data %>%
        x= expression(paste( "Inertia", (lambda) )),
        y = "Final State", subtitle = expression(paste("Minority Stubbornness ", (beta["-"] ))))+
   theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
-        text = element_text(size=20))+
+        text = element_text(size=20),
+        legend.text = element_text(size=15),
+        legend.title = element_text(size=15))+
   theme(legend.position = "bottom")+
   ggpubr::rremove("grid")+ggpubr::border()
 

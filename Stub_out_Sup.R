@@ -125,6 +125,8 @@ for(n0 in vars_n0)
     theme(plot.title = element_text(hjust = 0.5), 
           plot.subtitle = element_text(hjust = 0.5), 
           text = element_text(size=20),
+          axis.text.x = element_text(size = 10),
+          axis.text.y = element_text(size = 10),
           legend.position = "bottom", legend.key.width = unit(2,"cm"),
           legend.title = element_text(vjust = 0.9))+
     ggpubr::rremove("grid")+ggpubr::border()
@@ -139,12 +141,14 @@ for(n0 in vars_n0)
                          mid = "grey", guide = "colourbar", limits = c(-1,1))+
     theme_classic(base_size = 15)+
     labs(title = paste0("Effect of stubbornness
-  on final state (IM) ; ", "n+(0) = ", n0), x= expression(paste("Minority stubbornness ", (beta['-']) )), 
+  on final state (OM) ; ", "n+(0) = ", n0), x= expression(paste("Minority stubbornness ", (beta['-']) )), 
          y = expression(paste("Majority stubbornness ", (beta['+']))), 
          fill = "Final State", subtitle= "Minority Strategy")+
     theme(plot.title = element_text(hjust = 0.5), 
           plot.subtitle = element_text(hjust = 0.5), 
           text = element_text(size=20),
+          axis.text.x = element_text(size = 10),
+          axis.text.y = element_text(size = 10),
           legend.position = "bottom", legend.key.width = unit(2,"cm"),
           legend.title = element_text(vjust = 0.9))+
     ggpubr::rremove("grid")+ggpubr::border()

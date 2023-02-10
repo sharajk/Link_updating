@@ -131,15 +131,14 @@ data[[1]] %>%
   geom_line()+
   theme_light(base_size = 13)+
   ggpubr::border()+
-  scale_linetype_manual(values = c("solid", "dashed"), name = "Link updating
-subpopulation")+
+  scale_linetype_manual(values = c("solid", "dashed"), name = "Link updating subpopulation")+
   scale_color_manual(values = c("#FF0000","#0000FF"), name = "Model")+
   labs(title = "Effect of disagreement avoidance\non convergence speed", 
        x = expression(paste('Disagreement avoidance probability ',(phi[2]))),
        y = "Speed to majority consensus" ) +
   theme(plot.title = element_text(hjust = 0.5), text = element_text(size = 20),
-        legend.text = element_text(size=16), legend.title = element_text(size=17))
-
+        legend.text = element_text(size=14), legend.title = element_text(size=15),
+        legend.position = "bottom", legend.box = "vertical")
 
 #Agreement avoidance variation (left)
 
@@ -151,13 +150,13 @@ data[[2]] %>%
   geom_line()+
   theme_light(base_size = 13)+
   ggpubr::border()+
-  scale_linetype_manual(values = c("solid", "dashed"), name = "Link updating
-subpopulation")+
+  scale_linetype_manual(values = c("solid", "dashed"), name = "Link updating subpopulation")+
   scale_color_manual(values = c("#FF0000","#0000FF"), name = "Model")+
   labs(title = "Effect of Agreement avoidance\non convergence speed", 
        x = expression(paste('Agreement avoidance probability ',(phi[1]))), 
        y = "Speed to majority consensus" ) +
   theme(plot.title = element_text(hjust = 0.5), text = element_text(size = 20),
-        legend.text = element_text(size=16), legend.title = element_text(size=17))
+        legend.text = element_text(size=15), legend.title = element_text(size=15),
+        legend.position = "bottom", legend.box = "vertical")
 
 

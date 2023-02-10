@@ -82,7 +82,9 @@ for(n0 in c(0.8,0.6,0.5))
          x = expression(paste("Minority disagreement avoidance ", (phi['2-']) )), 
          y = expression(paste("Majority disagreement avoidance ", (phi['2+']) )), fill = "Final
 State", subtitle = expression(paste("Minority stubbornness ", (beta['-']) )))+
-    theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), text = element_text(size=14))+
+    theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
+          text = element_text(size=20), axis.text.x = element_text(size = 10),
+          axis.text.y = element_text(size = 10))+
     ggpubr::rremove("grid")+ggpubr::border()+
     theme(legend.position = "none")
   
@@ -99,11 +101,11 @@ State", subtitle = expression(paste("Minority stubbornness ", (beta['-']) )))+
          x = expression(paste("Minority disagreement avoidance ", (phi['2-']) )), 
          y = expression(paste("Majority disagreement avoidance ", (phi['2+']) )), fill = "Final
 State", subtitle = expression(paste("Minority stubbornness ", (beta['-']) )))+
-    theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), text = element_text(size=14))+
+    theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
+          text = element_text(size=20), axis.text.x = element_text(size = 10),
+          axis.text.y = element_text(size = 10))+
     ggpubr::rremove("grid")+ggpubr::border()+
     theme(legend.position = "none")
-
-  data[[paste0("Maj_",n0*100)]] <- datan0
   
   pim
   pom
