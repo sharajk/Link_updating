@@ -7,7 +7,7 @@ The authors of the manuscript are: Sharaj Kunjar*, Ariana Strandburg-Peshkin, Mo
 
 *corresponding author (sharaj.kunjar@gmail.com)
 
-The packages used in the codes are: ggplot2, dplyr, ggpubr, deSolve and scales
+The packages used in the codes are: ggplot2, dplyr, ggpubr, deSolve, ggridges, svglite and scales
 
 Structure of the repository:
 * Incoming_model.R and Outgoing_model.R contain the functions that generate all the simulations on the mathematical models described in the manuscript.
@@ -16,7 +16,7 @@ Structure of the repository:
 * Synth_data folder contains all the generated synthetic data that is used to obtain the figures. The names of the R dataframes correspond to the names of the R scripts that generated them.
 * R Scripts and dataframes matched to the figure labels in the manuscript:
   * Figure 3: Stub_out.RData
-  - Figure 4AB: LinkStrat_out.RData
+  - Figure 4A: LinkStrat_out.RData
   - Figure 4CD: Disagreement_out.RData
   - Figure 5AB: LinkStrat_speed.RData
   - Figure 5C: Inertia_speed.RData
