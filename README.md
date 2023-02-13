@@ -17,7 +17,7 @@ Structure of the repository:
 * R Scripts and dataframes matched to the figure labels in the manuscript:
   * Figure 3: Stub_out.RData
   - Figure 4A: LinkStrat_out.RData
-  - Figure 4CD: Disagreement_out.RData
+  - Figure 4BC: Disagreement_out.RData
   - Figure 5AB: LinkStrat_speed.RData
   - Figure 5C: Inertia_speed.RData
   - Figure 5D: Stub_speed.RData
