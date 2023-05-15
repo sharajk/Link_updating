@@ -29,3 +29,6 @@ Structure of the repository:
   - Figure S5B: Stub_speed_Sup.RData
 
 Slight cosmetic changes have been made to the figures obtained for better visualisation. The codes are a work in progress right now for journal submission.
+
+[![DOI](https://zenodo.org/badge/563285567.svg)](https://zenodo.org/badge/latestdoi/563285567)
+
