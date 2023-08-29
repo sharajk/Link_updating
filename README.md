@@ -1,7 +1,7 @@
 # Link_updating
 This repository contains codes for the simulations and figures obtained in the manuscript: Link updating strategies influence consensus decisions as a function of the direction of communication. 
 
-Find the preprint here: https://doi.org/10.48550/arXiv.2212.02880
+Find the paper here: https://doi.org/10.1098/rsos.230215
 
 The authors of the manuscript are: Sharaj Kunjar*, Ariana Strandburg-Peshkin, Mohit Kumar Jolly, Sumantra Sarkar, Pranav Minasandra, Helge Giese and Nico Gradwohl.
 
